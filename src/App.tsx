@@ -1,10 +1,12 @@
-import './App.css';
+import { Library, ReadingList } from './components';
+import { LibraryContextProvider } from './contexts';
 
 function App() {
   return (
-    <>
-      <h1>React App</h1>
-    </>
+    <LibraryContextProvider>
+      <Library />
+      <ReadingList />
+    </LibraryContextProvider>
   );
 }
 
