@@ -1,0 +1,15 @@
+.app-content {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 25px;
+}
+
+.empty-reading-list {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
+}

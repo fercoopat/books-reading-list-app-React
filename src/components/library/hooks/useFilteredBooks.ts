@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { useLibraryContext } from '.';
-import { GENDER } from '../constants';
+import { useLibraryContext } from '../../../hooks';
+import { GENDER } from '../../../constants';
 
 function useFilteredBooks() {
   const { books } = useLibraryContext();

@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext } from 'react';
 import { BOOKS } from '../data';
-import { useReadingList } from '../hooks';
 import { BookType } from '../types';
+import { useReadingList } from './hooks';
 
 interface ContextType {
   books: BookType[];

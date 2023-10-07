@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { INIT_VALUE } from '../constants';
-import { BookType } from '../types';
+import { INIT_VALUE } from '../../constants';
+import { BookType } from '../../types';
 
 function useReadingList() {
   const [readingList, setReadingList] = useState<BookType[]>(INIT_VALUE);

@@ -1,5 +1,6 @@
 import { ChangeEvent } from 'react';
 import { GENDER, GENDER_VALUES } from '../../constants';
+import styles from './gender-selector.module.css';
 
 interface GenderSelectorProps {
   onSelectGender: (gender: string) => void;
@@ -11,7 +12,7 @@ function GenderSelector({ onSelectGender }: GenderSelectorProps) {
   };
 
   return (
-    <select name='gender-selector' id='gender-selector' onChange={handleSelect}>
+    <select className={styles['gender-selector']} onChange={handleSelect}>
       {GENDER_VALUES.map((gender) => (
         <option key={gender} value={gender}>
           {gender === GENDER.ALL ? 'Todos' : gender}

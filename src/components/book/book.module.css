@@ -1,6 +1,45 @@
 .book {
-  border: 1px solid green;
-  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.book:hover {
+  background-color: #dddddd67;
+  cursor: pointer;
+  transition: ease 0.3;
+}
+
+.book header {
+  width: 100%;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.book main {
+  display: flex;
+  justify-content: center;
+}
+
+.book footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  font-size: larger;
+}
+
+.book-author {
+  align-self: flex-start;
+  font-size: medium;
+}
+
+.book-pages {
+  align-self: flex-end;
+  font-size: small;
 }
 
 .pinned {

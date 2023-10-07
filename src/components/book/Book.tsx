@@ -24,9 +24,20 @@ function Book({ book }: BookProps) {
     }
   };
 
+  const classes = 'book';
+
   return (
-    <li className={styles[isPinned ? 'pinned' : 'book']} onClick={clickHandler}>
-      <p>{book.title}</p>
+    <li className={styles[classes]} onClick={clickHandler}>
+      <header>
+        <img src={book.cover} alt={book.title} />
+      </header>
+      <main>
+        <p className={styles['book-title']}>{book.title}</p>
+      </main>
+      <footer>
+        <small className={styles['book-author']}>{book.author.name}</small>
+        <small className={styles['book-pages']}>{book.pages}</small>
+      </footer>
     </li>
   );
 }

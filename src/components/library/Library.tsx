@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { Book, GenderSelector } from '..';
 import { GENDER } from '../../constants';
-import { useFilteredBooks, useLibraryContext } from '../../hooks';
+import { useLibraryContext } from '../../hooks';
+import { useFilteredBooks } from './hooks';
 import styles from './library.module.css';
 
 function Library() {
@@ -17,25 +18,26 @@ function Library() {
   if (filteredBooks.length < 1) return <h1>No books to show! :(</h1>;
 
   return (
-    <>
-      <header>
-        <h1>Total of books available: {booksAvailable}</h1>
-        {selectedGender !== GENDER.ALL && (
-          <h1>
-            Books of {selectedGender}: {filteredBooks.length}
-          </h1>
-        )}
+    <section className={styles['library-section']}>
+      <header className={styles['library-header']}>
+        <p>Total of books available: {booksAvailable}</p>
+
         <GenderSelector onSelectGender={changeGenderHandler} />
+        {selectedGender !== GENDER.ALL && (
+          <p>
+            Books of {selectedGender}: {filteredBooks.length}
+          </p>
+        )}
       </header>
 
-      <section>
-        <ul className={styles['library']}>
+      <main>
+        <ul className={styles['books-list']}>
           {filteredBooks.map((book) => (
             <Book key={book.ISBN} book={book} />
           ))}
         </ul>
-      </section>
-    </>
+      </main>
+    </section>
   );
 }
 
