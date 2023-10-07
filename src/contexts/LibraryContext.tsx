@@ -1,5 +1,6 @@
-import { PropsWithChildren, createContext, useState } from 'react';
+import { PropsWithChildren, createContext } from 'react';
 import { BOOKS } from '../data';
+import { useReadingList } from '../hooks';
 import { BookType } from '../types';
 
 interface ContextType {
@@ -19,23 +20,12 @@ export const LibraryContext = createContext<ContextType>({
 });
 
 export const LibraryContextProvider = ({ children }: PropsWithChildren) => {
-  const [readingList, setReadingList] = useState<BookType[]>([]);
-
-  const getBookInReadingList = (isbn: string) => {
-    const index = readingList.findIndex((book) => book.ISBN === isbn);
-
-    return index < 0 ? false : true;
-  };
-
-  const addToReadingList = (book: BookType) => {
-    setReadingList((prev) => [...prev, book]);
-  };
-
-  const removeFromReadingList = (isbn: string) => {
-    const updatedList = [...readingList].filter((book) => book.ISBN !== isbn);
-
-    setReadingList(updatedList);
-  };
+  const {
+    readingList,
+    getBookInReadingList,
+    addToReadingList,
+    removeFromReadingList,
+  } = useReadingList();
 
   return (
     <LibraryContext.Provider
