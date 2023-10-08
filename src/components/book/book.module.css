@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid #ddd;
-  padding: 10px;
   transition: background-color ease 0.3s;
 }
 
@@ -20,7 +19,6 @@
 
 .book header,
 .book-pinned header {
-  width: 100%;
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
@@ -29,12 +27,14 @@
 .book-pinned main {
   display: flex;
   justify-content: center;
+  padding: 10px;
 }
 
 .book footer,
 .book-pinned footer {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .book-title {

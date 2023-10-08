@@ -13,6 +13,7 @@
 .reading-list li {
   background-color: transparent;
   border: none;
+  padding: 10px;
 }
 
 .reading-list li main,

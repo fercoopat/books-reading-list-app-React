@@ -39,7 +39,7 @@ function Book({ book }: BookProps) {
       </main>
       <footer>
         <small className={styles['book-author']}>{book.author.name}</small>
-        <small className={styles['book-pages']}>{book.pages}</small>
+        <small className={styles['book-pages']}>{book.pages} pages</small>
       </footer>
     </li>
   );
