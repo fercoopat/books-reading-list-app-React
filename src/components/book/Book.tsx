@@ -24,7 +24,10 @@ function Book({ book }: BookProps) {
     }
   };
 
-  const classes = 'book';
+  const classes = useMemo(
+    () => (isPinned ? 'book-pinned' : 'book'),
+    [isPinned]
+  );
 
   return (
     <li className={styles[classes]} onClick={clickHandler}>

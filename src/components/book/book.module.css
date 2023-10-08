@@ -1,29 +1,38 @@
-.book {
+.book,
+.book-pinned {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid #ddd;
   padding: 10px;
+  transition: background-color ease 0.3s;
 }
 
-.book:hover {
+.book-pinned {
+  background-color: #dddddd4f;
+}
+
+.book:hover,
+.book-pinned:hover {
   background-color: #dddddd67;
   cursor: pointer;
-  transition: ease 0.3;
 }
 
-.book header {
+.book header,
+.book-pinned header {
   width: 100%;
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
 
-.book main {
+.book main,
+.book-pinned main {
   display: flex;
   justify-content: center;
 }
 
-.book footer {
+.book footer,
+.book-pinned footer {
   display: flex;
   flex-direction: column;
 }
@@ -40,9 +49,4 @@
 .book-pages {
   align-self: flex-end;
   font-size: small;
-}
-
-.pinned {
-  color: red;
-  text-decoration: line-through;
 }
