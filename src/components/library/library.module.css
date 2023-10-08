@@ -9,9 +9,3 @@
   justify-content: flex-start;
   gap: 20px;
 }
-
-.books-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
-}
