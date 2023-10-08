@@ -9,9 +9,6 @@ function App() {
     <main className={styles['app-content']}>
       <Library />
       {readingList.length > 0 && <ReadingList />}
-      {readingList.length < 1 && (
-        <p className={styles['empty-reading-list']}>Add some books!</p>
-      )}
     </main>
   );
 }

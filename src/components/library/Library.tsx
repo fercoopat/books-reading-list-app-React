@@ -28,6 +28,8 @@ function Library() {
 
         <GenderSelector onSelectGender={changeGenderHandler} />
 
+        {readingList.length < 1 && <p>Click a book ;)</p>}
+
         {selectedGender !== GENDER.ALL && (
           <p>
             Books of {selectedGender}: {filteredBooks.length}
