@@ -1,0 +1,10 @@
+.range-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.range-input input {
+  accent-color: #ddd;
+}

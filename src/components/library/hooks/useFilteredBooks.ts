@@ -1,12 +1,16 @@
 import { ChangeEvent, useMemo, useState } from 'react';
 import { GENDER } from '../../../constants';
 import { useLibraryContext } from '../../../hooks';
+import { getNumberOfPages } from '../../../utils';
 
 function useFilteredBooks() {
   const { books } = useLibraryContext();
 
+  const numberOfPages = useMemo(() => getNumberOfPages(books), [books]);
+
   const [selectedGender, setSelectedGender] = useState('');
   const [search, setSearch] = useState('');
+  const [pages, setPages] = useState(numberOfPages.min);
 
   const booksByGender = useMemo(() => {
     if (selectedGender !== GENDER.ALL) {
@@ -15,14 +19,25 @@ function useFilteredBooks() {
     return books;
   }, [selectedGender, books]);
 
+  const booksByNumberOfPages = useMemo(() => {
+    if (!pages) {
+      return booksByGender;
+    }
+    return [...booksByGender].filter((book) => book.pages >= pages);
+  }, [booksByGender, pages]);
+
   const filteredBooks = useMemo(() => {
     if (search.length > 0) {
-      return [...booksByGender].filter((book) =>
+      return [...booksByNumberOfPages].filter((book) =>
         book.title.toLowerCase().includes(search.toLowerCase())
       );
     }
-    return booksByGender;
-  }, [search, booksByGender]);
+    return booksByNumberOfPages;
+  }, [search, booksByNumberOfPages]);
+
+  const changeGenderHandler = (gender: string) => {
+    setSelectedGender(gender);
+  };
 
   const searchBookHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setTimeout(() => {
@@ -30,15 +45,19 @@ function useFilteredBooks() {
     }, 500);
   };
 
-  const changeGenderHandler = (gender: string) => {
-    setSelectedGender(gender);
+  const rangeChangeHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setTimeout(() => {
+      setPages(+target.value);
+    }, 500);
   };
 
   return {
-    selectedGender,
     changeGenderHandler,
     filteredBooks,
+    numberOfPages,
+    rangeChangeHandler,
     searchBookHandler,
+    selectedGender,
   };
 }
 

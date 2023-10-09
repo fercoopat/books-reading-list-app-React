@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { BookList, GenderSelector, SearchInput } from '..';
+import { BookList, GenderSelector, RangeInput, SearchInput } from '..';
 import { GENDER } from '../../constants';
 import { useLibraryContext } from '../../hooks';
 import { useFilteredBooks } from './hooks';
@@ -8,10 +8,12 @@ import styles from './library.module.css';
 function Library() {
   const { books, readingList } = useLibraryContext();
   const {
-    filteredBooks,
-    selectedGender,
     changeGenderHandler,
+    filteredBooks,
+    numberOfPages,
+    rangeChangeHandler,
     searchBookHandler,
+    selectedGender,
   } = useFilteredBooks();
 
   const booksAvailable = useMemo(
@@ -23,6 +25,11 @@ function Library() {
     <section className={styles['library-section']}>
       <header className={styles['library-header']}>
         <p>Total of books available: {booksAvailable}</p>
+
+        <RangeInput
+          numberOfPages={numberOfPages}
+          onChange={rangeChangeHandler}
+        />
 
         <SearchInput onChange={searchBookHandler} />
 
